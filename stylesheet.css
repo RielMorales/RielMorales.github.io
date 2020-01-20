@@ -1,0 +1,14 @@
+/* myStyle.css */
+body {
+ background-color: #00426f;
+}
+h1 {
+ color: #ccebff;
+ text-align: center;
+ font-family: "Century Gothic", Century, sans-serif;
+}
+p {
+ color: #FFFFFF;
+ text-align: left;
+ border: 3px;
+}
