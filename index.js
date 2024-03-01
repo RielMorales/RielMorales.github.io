@@ -1,9 +1,22 @@
 const isNumeric = x => {
-  var i = 0;
+  let i = 0;
   var character = '';
     while(i < x.length){
       character = x.charAt(i);
       if (!isNaN(character * 1)){
+        return true
+      }
+      i++
+    }
+  return false
+}
+
+const isUpperCase = x => {
+  let i = 0;
+  var character = '';
+    while(i < x.length){
+      character = x.charAt(i);
+      if ((character == character.toUpperCase()) && isNumeric(character) == false){
         return true
       }
       i++
@@ -17,7 +30,9 @@ const validatePassword = (x, y) => {
   if (x === y) {
     if (x.length >= 8){
       if (isNumeric(x)){
-        return true
+        if (isUpperCase(x)){
+          return true
+        }
       }
     }
   }
