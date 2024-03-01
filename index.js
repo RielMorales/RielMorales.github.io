@@ -2,7 +2,9 @@
 const validatePassword = (x, y) => {
   // checks if the two passwords match
   if (x === y) {
-    return true
+    if (x.length >= 8){
+        return true
+    }
   }
   return false //invalid password
 }
