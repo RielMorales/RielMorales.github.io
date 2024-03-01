@@ -66,7 +66,16 @@ const reversePassword = x => {
 
 //A function for storing the password to the object.
 const storePassword = (x, y, z) => {
-  
+  let user = {
+    name: x,
+    firstPassword: y,
+    secondPassword: z
+  };
+  if (validatePassword(y,z)){
+    return ({name: x, newpassword: reversePassword(y)})
+  } else {
+    return ({name: x, newpassword: y})
+  }
 }
 
 console.log(validatePassword("helloworld", "hello"))
@@ -77,3 +86,5 @@ console.log(validatePassword("HELLO1234", "HELLO1234"))
 
 console.log(reversePassword("Hello1234"))
 
+console.log(storePassword("John", "Pass1234", "Pass1234"))
+console.log(storePassword("John", "Pass123", "Pass12345"))
