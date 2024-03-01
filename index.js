@@ -64,6 +64,11 @@ const reversePassword = x => {
       return reversePassword(x.substr(1)) + x.charAt(0);
 }
 
+//A function for storing the password to the object.
+const storePassword = (x, y, z) => {
+  
+}
+
 console.log(validatePassword("helloworld", "hello"))
 console.log(validatePassword("hello", "hello"))
 console.log(validatePassword("hello1234", "hello1234"))
