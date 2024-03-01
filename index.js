@@ -1,3 +1,4 @@
+//A function that checks if a string has numeric character
 const isNumeric = x => {
   let i = 0;
   var character = '';
@@ -11,6 +12,7 @@ const isNumeric = x => {
   return false
 }
 
+//A function that checks if a string has upper case character
 const isUpperCase = x => {
   let i = 0;
   var character = '';
@@ -24,6 +26,7 @@ const isUpperCase = x => {
   return false
 }
 
+//A function that checks if a string has lower case character
 const isLowerCase = x => {
   let i = 0;
   var character = '';
@@ -39,19 +42,23 @@ const isLowerCase = x => {
 
 // A function for validating if 2 passwords match.
 const validatePassword = (x, y) => {
-  // checks if the two passwords match
-  if (x === y) {
-    if (x.length >= 8){
-      if (isNumeric(x)){
-        if (isUpperCase(x)){
-          if (isLowerCase(x)){
-            return true
+  if (x === y) {  // checks if the two passwords match
+    if (x.length >= 8){ //checks if the password has a valid length
+      if (isNumeric(x)){  //checks if the password has numeric character
+        if (isUpperCase(x)){  //checks if the password has uppercase character
+          if (isLowerCase(x)){  //checks if the password has lowercase character
+            return true //valid password
           }
         }
       }
     }
   }
   return false //invalid password
+}
+
+//A function for reversing the password.
+const reversePassword = x => {
+  
 }
 
 console.log(validatePassword("helloworld", "hello"))
