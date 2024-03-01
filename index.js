@@ -56,9 +56,12 @@ const validatePassword = (x, y) => {
   return false //invalid password
 }
 
-//A function for reversing the password.
+//A function for reversing the password using recursion.
 const reversePassword = x => {
-  
+    if (x === "")
+      return "";
+    else
+      return reversePassword(x.substr(1)) + x.charAt(0);
 }
 
 console.log(validatePassword("helloworld", "hello"))
@@ -66,3 +69,6 @@ console.log(validatePassword("hello", "hello"))
 console.log(validatePassword("hello1234", "hello1234"))
 console.log(validatePassword("Hello1234", "Hello1234"))
 console.log(validatePassword("HELLO1234", "HELLO1234"))
+
+console.log(reversePassword("Hello1234"))
+
