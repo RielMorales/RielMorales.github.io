@@ -8,6 +8,7 @@
   },
   "author": "Morales, Riel Jefferson M.",
   "license": "ISC",
+  "type": "module",
   "dependencies": {
     "uuid": "^9.0.1",
     "validator": "^13.11.0"
