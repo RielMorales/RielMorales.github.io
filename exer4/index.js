@@ -4,3 +4,4 @@ const generateUniqueID = (firstName, lastName) => {
 
 }
 
+export {generateUniqueID}
