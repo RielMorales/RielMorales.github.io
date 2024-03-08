@@ -24,25 +24,29 @@ function isNumber(value) {
 
 //A function use to add the details input by user to the list of accounts in a file named users.txt
 const addAccount = ([firstName, lastName, email, age]) => {
+  //used the generateUnique ID function to generate unique ID
   const uniqueID = generateUniqueID(firstName, lastName);
+  //checks if name inputs are empty
   if (uniqueID == "First Name is Empty" || uniqueID == "Last Name is Empty") return "First Name or Last Name input is empty";
-  if (validator.isEmail(email)){
-    if (isNumber(age)){
+  if (validator.isEmail(email)){ //checks if email is valid
+    if (isNumber(age)){ //checks if the input is number
       try{
         // return firstName + "," + lastName + "," + email + "," + age.toString() + "," + uniqueID;
+
+        //adding the account details in users.txt file
         appendFileSync('users.txt', firstName + "," + lastName + "," + email + "," + age.toString() + "," + uniqueID + "\n");
-        return true
+        return true;
       }catch (err){
-        return false
+        return false;
       }
 
     } else {
-      // return age.toString() + " is not a valid input.\nInput must be a number."
-      return false
+      console.log(age.toString() + " is not a valid input.\nInput must be a number.");
+      return false;
     }
   } else {
-    // return email + " is not a valid email"
-    return false
+    console.log(email + " is not a valid email");
+    return false;
   }
 
 }
