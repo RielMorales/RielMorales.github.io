@@ -16,4 +16,9 @@ const generateUniqueID = (firstName, lastName) => {
   }
 }
 
+//A function use to add the details input by user to the list of accounts in a file named users.txt
+const addAccount = (firstName, lastName, email, age) => {
+
+}
+
 export {generateUniqueID};
