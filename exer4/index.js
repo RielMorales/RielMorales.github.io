@@ -1,6 +1,7 @@
 //import of uuid package
 import { v4 as uuidv4 } from 'uuid';
 import validator from 'validator';
+import { appendFileSync } from 'node:fs';
 
 // A function use to generate unique id based on first and last name.
 // it uses uuid package to generate a unqiue id
@@ -27,12 +28,21 @@ const addAccount = ([firstName, lastName, email, age]) => {
   if (uniqueID == "First Name is Empty" || uniqueID == "Last Name is Empty") return "First Name or Last Name input is empty";
   if (validator.isEmail(email)){
     if (isNumber(age)){
-      return firstName + ", " + lastName + ", " + email + ", " + age.toString() + ", " + uniqueID;
+      try{
+        // return firstName + "," + lastName + "," + email + "," + age.toString() + "," + uniqueID;
+        appendFileSync('users.txt', firstName + "," + lastName + "," + email + "," + age.toString() + "," + uniqueID + "\n");
+        return true
+      }catch (err){
+        return false
+      }
+
     } else {
-      return age.toString() + " is not a valid input.\nInput must be a number."
+      // return age.toString() + " is not a valid input.\nInput must be a number."
+      return false
     }
   } else {
-    return email + " is not a valid email"
+    // return email + " is not a valid email"
+    return false
   }
 
 }
