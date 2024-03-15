@@ -13,7 +13,12 @@ app.get('/', (req, res) => {
 });
 
 app.post('/add-book', (req, res) => {
-  res.send('Received a POST request');
+  // res.send('Received a POST request: \n' + 'Book Name: ' + req.body.bookName + '\nISBN: ' + req.body.isbn + '\nAuthor: ' + req.body.author + '\nYear Published: ' + req.body.yearPublished);
+  if (!(req.body.bookName.length === 0 || req.body.isbn.length === 0 || req.body.author.length === 0 || req.body.yearPublished.length === 0)) {
+    res.json({success: true});
+  } else {
+    res.json({success: false});
+  }
 });
 
 // this tells our server to listen to the port 3000
