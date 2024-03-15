@@ -1,4 +1,5 @@
 import express from 'express';
+import { appendFileSync } from 'node:fs';
 
 // instantiate the server
 const app = express();
@@ -15,7 +16,12 @@ app.get('/', (req, res) => {
 app.post('/add-book', (req, res) => {
   // res.send('Received a POST request: \n' + 'Book Name: ' + req.body.bookName + '\nISBN: ' + req.body.isbn + '\nAuthor: ' + req.body.author + '\nYear Published: ' + req.body.yearPublished);
   if (!(req.body.bookName.length === 0 || req.body.isbn.length === 0 || req.body.author.length === 0 || req.body.yearPublished.length === 0)) {
-    res.json({success: true});
+    try {
+      appendFileSync('books.txt', req.body.bookName +','+req.body.isbn+','+req.body.author+','+req.body.yearPublished+'\n');
+      res.json({success: true});
+    } catch (err) {
+      res.json({success: false});
+    }
   } else {
     res.json({success: false});
   }
