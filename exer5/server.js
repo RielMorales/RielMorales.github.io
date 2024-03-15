@@ -7,15 +7,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//funtion that finds the book details in the text file books.txt
+//it returns the book details as an object
 const findBook = (author, isbn) => {
   const books = readFileSync('./books.txt', {encoding: 'utf8', flag: 'r'});
   const book = books.split("\n");
-  var resultBooks = [];
+  let resultBooks = [];
 
   for (let i = 0; i < book.length; i++){
     let bookDetails = book[i].split(",");
-    console.log(bookDetails[2]);
-    console.log(author);
     if (bookDetails[2] == author){
       resultBooks.push({
         bookName: bookDetails[0],
@@ -25,12 +25,16 @@ const findBook = (author, isbn) => {
       });
     }
   }
-  
-  console.log("ResultBooks")
-  console.log(resultBooks);
 
+  //checks if the queries are in the txt file.
+  if (resultBooks.length === 0){
+    return ("Author: "+author+" and ISBN: "+isbn+" is not found in the database");
+  }
+
+  //if there is no isbn in query, it will return all of the books in txt file written by the author in query
   if (isbn === undefined){
     return resultBooks;
+  //if there is isbn, it will return the exact book in the txt file
   } else {
     let result = [];
     for (let i = 0; i < resultBooks.length; i++){
@@ -43,6 +47,22 @@ const findBook = (author, isbn) => {
   }
 }
 
+//function that checks if the new book's isbn to be added is unique in the database.
+//if it exist, it will return true, else it will return false.
+const findISBN = (isbn) => {
+  const books = readFileSync('./books.txt', {encoding: 'utf8', flag: 'r'});
+  const book = books.split("\n");
+  var resultBooks = [];
+
+  for (let i = 0; i < book.length; i++){
+    let bookDetails = book[i].split(",");
+    if (bookDetails[1] == isbn){
+      return true;
+    }
+  }
+  return false;
+}
+
 // this tells our app to listen for GET messages on the '/' path
 // the callback function specifies what the server will do when a message is received
 app.get('/find-by-isbn-author', (req, res) => {
@@ -51,17 +71,23 @@ app.get('/find-by-isbn-author', (req, res) => {
 });
 
 app.post('/add-book', (req, res) => {
-  // res.send('Received a POST request: \n' + 'Book Name: ' + req.body.bookName + '\nISBN: ' + req.body.isbn + '\nAuthor: ' + req.body.author + '\nYear Published: ' + req.body.yearPublished);
-
   //checker if the input has string with lenght 0
   if (!(req.body.bookName.length === 0 || req.body.isbn.length === 0 || req.body.author.length === 0 || req.body.yearPublished.length === 0)) {
-    //appending the content of input in books.txt file
-    try {
-      appendFileSync('books.txt', req.body.bookName +','+req.body.isbn+','+req.body.author+','+req.body.yearPublished+'\n');
-      res.json({success: true});
-    } catch (err) {
+    //checks if the isbn does not exist in the database before adding it
+    if (findISBN(req.body.isbn) == false){
+      //appending the content of input in books.txt file
+      try {
+        appendFileSync('books.txt', req.body.bookName +','+req.body.isbn+','+req.body.author+','+req.body.yearPublished+'\n');
+        res.json({success: true});
+      } catch (err) {
+        // console.log('Failed to write book details in the database');
+        res.json({success: false});
+      }
+    } else {
+      // console.log('ISBN exist in the database');
       res.json({success: false});
     }
+    
   } else {
     res.json({success: false});
   }
