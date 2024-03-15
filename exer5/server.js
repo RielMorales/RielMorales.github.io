@@ -12,6 +12,10 @@ app.get('/', (req, res) => {
   res.send('Hello!');
 });
 
+app.post('/add-book', (req, res) => {
+  res.send('Received a POST request');
+});
+
 // this tells our server to listen to the port 3000
 // we can also pass an optional callback function to execute after the server starts
 app.listen(3000, () => { console.log('Server started at port 3000')} );

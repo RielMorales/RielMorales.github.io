@@ -9,9 +9,8 @@ needle.get('http://localhost:3000/greeting?name=Riel', (err, res) => {
 });
 
 needle.post(    
-  'http://localhost:3000/submit-data',
-  { name: "Riel",
-    age: "is just a number" },
+  'http://localhost:3000/add-book',
+  { },
   (err, res) => {
     console.log(res.body)   // prints the server’s response “Received a POST request.”
   }
