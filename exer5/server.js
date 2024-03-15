@@ -1,5 +1,5 @@
 import express from 'express';
-import { appendFileSync } from 'node:fs';
+import { appendFileSync, readFileSync } from 'node:fs';
 
 // instantiate the server
 const app = express();
@@ -7,10 +7,47 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+const findBook = (author, isbn) => {
+  const books = readFileSync('./books.txt', {encoding: 'utf8', flag: 'r'});
+  const book = books.split("\n");
+  var resultBooks = [];
+
+  for (let i = 0; i < book.length; i++){
+    let bookDetails = book[i].split(",");
+    console.log(bookDetails[2]);
+    console.log(author);
+    if (bookDetails[2] == author){
+      resultBooks.push({
+        bookName: bookDetails[0],
+        isbn: bookDetails[1],
+        author: bookDetails[2],
+        yearPublished: bookDetails[3]
+      });
+    }
+  }
+  
+  console.log("ResultBooks")
+  console.log(resultBooks);
+
+  if (isbn === undefined){
+    return resultBooks;
+  } else {
+    let result = [];
+    for (let i = 0; i < resultBooks.length; i++){
+      for (var key in resultBooks[i]){
+        if (resultBooks[i][key].indexOf(isbn)!=-1){
+          return resultBooks[i];
+        }
+      }
+    }
+  }
+}
+
 // this tells our app to listen for GET messages on the '/' path
 // the callback function specifies what the server will do when a message is received
 app.get('/find-by-isbn-author', (req, res) => {
-  res.send('The author is '+req.query.author+'.\n'+'The ISBN is '+req.query.isbn+'.\n');
+  const resultBooks = findBook(req.query.author, req.query.isbn)  
+  res.send(resultBooks);
 });
 
 app.post('/add-book', (req, res) => {
