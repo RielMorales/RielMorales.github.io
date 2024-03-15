@@ -9,8 +9,8 @@ app.use(express.urlencoded({ extended: false }));
 
 // this tells our app to listen for GET messages on the '/' path
 // the callback function specifies what the server will do when a message is received
-app.get('/', (req, res) => {
-  res.send('Hello!');
+app.get('/find-by-isbn-author', (req, res) => {
+  res.send('The author is '+req.query.author+'.\n'+'The ISBN is '+req.query.isbn+'.\n');
 });
 
 app.post('/add-book', (req, res) => {
