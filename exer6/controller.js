@@ -64,7 +64,15 @@ const removeUser = async (req, res) => {
 };
 
 const removeAllUser = async (req, res) => {
-    res.send("Remove All User Post")
+    let findAllStudent = await Student.find();
+    if (findAllStudent === null){
+        console.log("There is no Student Data in the Database");
+        res.send({deleted: false});
+    } else {
+        console.log(findAllStudent);
+        await Student.deleteMany();
+        res.send({deleted: true});
+    }
 };
 
 const searchUser = async (req, res) => {
