@@ -76,7 +76,7 @@ const removeAllUser = async (req, res) => {
 };
 
 const searchUser = async (req, res) => {
-    res.send("Search User Get")
+    res.send(await Student.find({stdnum: req.query.stdnum}));
 };
 
 const showAllUser = async (req, res) => {
