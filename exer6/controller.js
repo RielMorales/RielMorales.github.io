@@ -80,7 +80,7 @@ const searchUser = async (req, res) => {
 };
 
 const showAllUser = async (req, res) => {
-    res.send("Show All USer Get")
+    res.send(await Student.find());
 };
 
 export { homepage, saveStudent, updateStudent, removeUser, removeAllUser, searchUser, showAllUser };
