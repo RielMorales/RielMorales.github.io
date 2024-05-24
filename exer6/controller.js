@@ -24,18 +24,29 @@ const saveStudent = async (req, res) => {
     });
 
     let findOneStudent = await Student.findOne({stdnum: req.body.stdnum});
-    console.log(findOneStudent);
     if (findOneStudent === null){
         await newStudent.save()
         res.send({inserted: true});
     } else {
+        console.log(findOneStudent);
         console.log("Student Already Exist");
         res.send({inserted: false});
     }
 };
 
 const updateStudent = async (req, res) => {
-    res.send("Update Student Post")
+    let findOneStudent = await Student.findOne({fname: req.body.fname});
+    if (findOneStudent === null){
+        console.log("Student Does Not Exist");
+        res.send({update: false});
+    } else {
+        console.log(findOneStudent);
+        await Student.updateOne(
+            { fname: req.body.fname },
+            { $set: {lname: "Parker"} }
+        );
+        res.send({update: true});
+    }
 };
 
 const removeUser = async (req, res) => {

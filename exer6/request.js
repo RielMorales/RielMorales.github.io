@@ -1,5 +1,7 @@
 import needle from 'needle';
 
+
+//add student
 needle.post(
     'http://localhost:3000/save-student',
     {
@@ -65,12 +67,14 @@ needle.post(
     }
 );
 
-// needle.post(
-//     'http://localhost:3000/update',
-//     {
-//         fname: "Mary Jane"
-//     },
-//     (err, res) => {
-//         console.log(res.body);
-//     }
-// );
+
+//update student
+needle.post(
+    'http://localhost:3000/update',
+    {
+        fname: "Mary Jane"
+    },
+    (err, res) => {
+        console.log(res.body);
+    }
+);
