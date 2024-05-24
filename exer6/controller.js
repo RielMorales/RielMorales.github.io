@@ -50,7 +50,17 @@ const updateStudent = async (req, res) => {
 };
 
 const removeUser = async (req, res) => {
-    res.send("Remove User Post")
+    let findOneStudent = await Student.findOne({stdnum: req.body.stdnum});
+    if (findOneStudent === null){
+        console.log("Student Does Not Exist");
+        res.send({deleted: false});
+    } else {
+        console.log(findOneStudent);
+        await Student.deleteOne(
+            { stdnum: req.body.stdnum }
+        );
+        res.send({deleted: true});
+    }
 };
 
 const removeAllUser = async (req, res) => {

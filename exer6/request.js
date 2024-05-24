@@ -78,3 +78,14 @@ needle.post(
         console.log(res.body);
     }
 );
+
+//delete one student
+needle.post(
+    'http://localhost:3000/remove-user',
+    {
+        stdnum: "8051495845"
+    },
+    (err, res) => {
+        console.log(res.body);
+    }
+);
