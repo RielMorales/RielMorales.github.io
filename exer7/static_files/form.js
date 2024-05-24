@@ -34,6 +34,9 @@ const findFoodRank = (rank) => {
 
 const addNewFood = (name, description, url, rank) => {
   const parent = document.getElementById("fave-foods");
+  // const gridFood = document.createElement("div");
+  // gridFood.setAttribute("class", "foodGrid");
+  const gridFood = document.getElementById("fave-foods").querySelector(".foodGrid");
   const food = document.createElement("div");
   food.setAttribute("class", "food");
   food.setAttribute("name", name);
@@ -56,7 +59,9 @@ const addNewFood = (name, description, url, rank) => {
   descElem.innerText = description;
 
   const delButton = document.createElement("button");
-  // delButton.setAttribute("name", name);
+  const delContainer = document.createElement("div");
+  delContainer.setAttribute("class", "button-container");
+  // delButton.setAttribute("class", "button");
   delButton.setAttribute("id", "del-"+name);
   delButton.innerText = "Delete Food";
   delButton.addEventListener("click", deleteFood);
@@ -66,16 +71,22 @@ const addNewFood = (name, description, url, rank) => {
   food.appendChild(foodElem);
   food.appendChild(imgElem);
   food.appendChild(descElem);
-  food.appendChild(delButton);
+
+  delContainer.appendChild(delButton)
+  food.appendChild(delContainer);
   
-  parent.appendChild(food);
+  gridFood.appendChild(food);
+  // gridFood.appendChild(rankElem);
+  parent.appendChild(gridFood);
   sortFaveFoods("fave-foods");
 }
 
 //from stackoverflow
 const sortFaveFoods = (faveFoodsID) => {
   var mylist = document.getElementById(faveFoodsID);
-  var divs = mylist.getElementsByTagName('div');
+  var mylist1 = document.getElementById(faveFoodsID).querySelector(".foodGrid");
+  console.log(mylist.innerHTML);
+  var divs = mylist1.getElementsByClassName("food");
   var listitems = [];
   for (i = 0; i < divs.length; i++) {
           listitems.push(divs.item(i));
@@ -87,14 +98,16 @@ const sortFaveFoods = (faveFoodsID) => {
       return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
   });
   for (i = 0; i < listitems.length; i++) {
-      mylist.appendChild(listitems[i]);
+      mylist1.appendChild(listitems[i]);
   }
+  mylist.appendChild(mylist1);
+  console.log(mylist.innerHTML);
 }
 
 const deleteFood = (e) => {
   const foodId = document.getElementById(e.target.id);
-  console.log(foodId.parentNode.id);
-  const foodDelete = document.getElementById(foodId.parentNode.id);
+  console.log(foodId.parentNode.parentNode.id);
+  const foodDelete = document.getElementById(foodId.parentNode.parentNode.id);
   // const foodDelete = document.getElementById("del-");
   // const foodDelete = foodList.getElementsByTagName('button');
   // foodList.removeChild(foodDelete);

@@ -3,24 +3,35 @@
 <html>
     <head>
         <title>Favorite Food</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div id="add-food">
-            <h1>Favorite Food</h1>
-            <form id="new-food">
-                <label for="food-name">Food Name:</label>
-                <input type="text" id="food-name" name="food-name" placeholder="Favorite Food" required><br>
-                <label for="description">Description:</label>
-                <input type="text" id="description" name="description" placeholder="Description" required><br>
-                <label for="image-url">Image URL:</label>
-                <input type="text" id="image-url" name="image-url" placeholder="Image URL Here" required><br>
-                <label for="rank">Rank:</label>
-                <input type="number" id="rank" name="rank" placeholder="Rank of Food" required><br>
-                <input type="submit" id="submit-button" value="Submit">
-            </form>
+        <div class="form-container">
+            <div id="add-food">
+                <h1>Favorite Food</h1>
+                <form id="new-food">
+                    <div class="input-container">
+                        <label for="food-name">Food Name:</label><br>
+                        <input class="input" type="text" id="food-name" name="food-name" placeholder="Favorite Food" required><br>
+                        <label for="description">Description:</label><br>
+                        <input class="input" type="text" id="description" name="description" placeholder="Description" required><br>
+                        <label for="image-url">Image URL:</label><br>
+                        <input class="input" type="text" id="image-url" name="image-url" placeholder="Image URL Here" required><br>
+                        <label for="rank">Rank:</label><br>
+                        <input class="input" type="number" id="rank" name="rank" placeholder="Rank of Food" required><br>
+                        <div class="submit-container">
+                            <input class="button" type="submit" id="submit-button" value="Submit">
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
         </div>
-        <div name="fave-foods" id="fave-foods">
-
+        <div class="fave-foods" id="fave-foods">
+            <div class="foodGrid" id="foodGrid">
+                
+                
+            </div>
         </div>
         
 
