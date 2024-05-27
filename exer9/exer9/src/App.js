@@ -20,8 +20,8 @@ const products = [
   { name: "Samsong Washing Machine", image: Image02, id: 2 },
   { name: "Hanabesh Electric Fan", image: Image03, id: 3 },
   { name: "ElGi Refrigerator", image: Image04, id: 4 },
-  { name: "ElGi Refrigerator", image: Image04, id: 5 },
-  { name: "ElGi Refrigerator", image: Image04, id: 6 },
+  // { name: "ElGi Refrigerator", image: Image04, id: 5 },
+  // { name: "ElGi Refrigerator", image: Image04, id: 6 },
 ];
 
 const pushcart = [];
