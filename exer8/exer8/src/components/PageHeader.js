@@ -1,8 +1,8 @@
 import React from "react";
 import LazLogo from "../images/lazada-logo.png"
 
-export default function PageHeader({children}){
-    let navMenus = children;
+export default function PageHeader(props){
+    let navMenus = props.data;
     return (
         <div className="pageHead">
             <div className="logo-name">

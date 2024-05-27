@@ -7,7 +7,7 @@ export default function HomePage(props) {
     let products = navMenus[1];
     return (
         <div className="page">
-            <PageHeader>{navMenus[0]}</PageHeader>
+            <PageHeader data={navMenus[0]} />
             <div className="HomePageBody">
                 {
                     products.map((product) => {
