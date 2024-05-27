@@ -13,7 +13,9 @@ export default function HomePage(props) {
                 {
                     navMenus[1].map((product) => {
                         return (
-                            <Product key={product.id}>{ product }</Product>
+                            <div className="all-products" key={product.id}>
+                                <Product>{ product }</Product>
+                            </div>
                         )
                     })
                 }
