@@ -1,10 +1,10 @@
 import PageHeader from "../components/PageHeader";
 import Product from "../components/Product";
+import { pushcart } from "../App";
 
 export default function HomePage(props) {
     let navMenus = props.menuData;
     let products = navMenus[1];
-    let cart = navMenus[2];
     return (
         <div className="page">
             <PageHeader>{navMenus[0]}</PageHeader>
@@ -13,7 +13,7 @@ export default function HomePage(props) {
                     products.map((product) => {
                         return (
                             <div className="all-products" key={product.id}>
-                                <Product>{ [product, cart] }</Product>
+                                <Product>{ product }</Product>
                             </div>
                         )
                     })

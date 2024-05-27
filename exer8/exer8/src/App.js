@@ -21,12 +21,12 @@ const products = [
   { name: "ElGi Refrigerator", image: Image04, id: 4 },
 ];
 
-let pushcart = [];
+export let pushcart = [];
   
 
 function App() {
   return (
-    <HomePage menuData={ [menus, products, pushcart] }/>
+    <HomePage menuData={ [menus, products] }/>
   );
 }
 
