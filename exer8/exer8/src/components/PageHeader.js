@@ -1,5 +1,6 @@
 import React from "react";
 import LazLogo from "../images/lazada-logo.png"
+import NavMenu from "./NavMenu";
 
 export default function PageHeader(props){
     let navMenus = props.data;
@@ -14,7 +15,8 @@ export default function PageHeader(props){
             <ol className="navMenu">
                     {
                         navMenus.map((menu) => {
-                            return <li key={menu.id} onClick={() => {console.log("Pressed "+menu.name)}}><a href={menu.url}>{menu.name}</a></li>
+                            // return <li key={menu.id} onClick={() => {console.log("Pressed "+menu.name)}}><a href={menu.url}>{menu.name}</a></li>
+                            return <NavMenu data={menu} key={menu.id} />
                         })
                     }
             </ol>
