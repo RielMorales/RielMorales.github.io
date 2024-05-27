@@ -31,7 +31,22 @@ function App() {
   const [cart, setCart] = useState(pushcart);
   
   function updateCart(newCart){
-    setCart((cart) => [...cart, newCart])
+    let tempCart = [...cart]
+    let result = cart.filter(obj => obj.id === newCart.id)
+    console.log(result)
+    if (result.length === 0){
+      console.log("No Match")
+      tempCart = [...cart, newCart]
+    } else {
+      console.log("Match")
+      let index = cart.findIndex(obj => obj.id === newCart.id)
+      console.log(cart[index])
+      console.log(tempCart[index].qty)
+      tempCart[index] = {...tempCart[index], qty: (tempCart[index].qty + 1) }
+    }
+    setCart((cart) => {
+      return tempCart;
+    })
   }
   return (
     <HomePage menuData={ [menus, products, updateCart, cart] }/>

@@ -6,6 +6,7 @@ export default function Product(props) {
 
     function addToCart(e) {
         console.log("Added " + product.name + " to the cart!");
+        product.qty = 1;
         props.data[1](product);
     } 
 
