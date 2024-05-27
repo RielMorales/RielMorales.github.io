@@ -10,16 +10,16 @@ export default function Product(props) {
     } 
 
     return (
-        <>
-        <div className="product-container">
-            <div className="product">
-                <img src={product.image} alt={product.name} width="300px"/>
-                <li key={product.id}> {product.name} </li>
-                <button onClick={addToCart}>
-                    Add to Cart
-                </button>
+        <div className="prod-holder">
+            <div className="product-container">
+                <div className="product">
+                    <img src={product.image} alt={product.name} />
+                    <li key={product.id}> {product.name} </li>
+                    <button onClick={addToCart}>
+                        Add to Cart
+                    </button>
+                </div>
             </div>
         </div>
-        </>
     )
 }
