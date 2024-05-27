@@ -3,18 +3,17 @@ import Product from "../components/Product";
 
 export default function HomePage(props) {
     let navMenus = props.menuData;
+    let products = navMenus[1];
+    let cart = navMenus[2];
     return (
         <div className="page">
             <PageHeader>{navMenus[0]}</PageHeader>
-            {/* <body>Hello World</body> */}
             <div className="HomePageBody">
-                {/* {console.log("Body Content")}
-                {console.log(navMenus[1])} */}
                 {
-                    navMenus[1].map((product) => {
+                    products.map((product) => {
                         return (
                             <div className="all-products" key={product.id}>
-                                <Product>{ product }</Product>
+                                <Product>{ [product, cart] }</Product>
                             </div>
                         )
                     })

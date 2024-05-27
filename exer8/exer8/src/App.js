@@ -26,7 +26,7 @@ let pushcart = [];
 
 function App() {
   return (
-    <HomePage menuData={ [menus, products] }/>
+    <HomePage menuData={ [menus, products, pushcart] }/>
   );
 }
 
