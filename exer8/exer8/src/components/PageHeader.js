@@ -14,7 +14,7 @@ export default function PageHeader({children}){
             <ol className="navMenu">
                     {
                         navMenus.map((menu) => {
-                            return <li key={menu.id}>{menu.name}</li>
+                            return <li key={menu.id} onClick={() => {console.log("Pressed "+menu.name)}}><a href={menu.url}>{menu.name}</a></li>
                         })
                     }
             </ol>
