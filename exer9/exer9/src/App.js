@@ -32,16 +32,19 @@ function App() {
   
   function updateCart(newCart){
     let tempCart = [...cart]
+    console.log(tempCart)
     let result = cart.filter(obj => obj.id === newCart.id)
-    console.log(result)
+    // console.log(result)
     if (result.length === 0){
       console.log("No Match")
       tempCart = [...cart, newCart]
+    } else if(tempCart.length == 0){
+
     } else {
       console.log("Match")
       let index = cart.findIndex(obj => obj.id === newCart.id)
-      console.log(cart[index])
-      console.log(tempCart[index].qty)
+      // console.log(cart[index])
+      // console.log(tempCart[index].qty)
       tempCart[index] = {...tempCart[index], qty: (tempCart[index].qty + 1) }
     }
     setCart((cart) => {

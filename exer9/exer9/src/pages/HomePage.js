@@ -41,7 +41,7 @@ export default function HomePage(props) {
                                         return (
                                             props.menuData[3].map((cart, index) => {
                                                 return (
-                                                    <Cart key={index} data={cart} />                
+                                                    <Cart key={index} data={[cart, props.menuData[2], props.menuData[3]]} />                
                                                 )
                                             })
                                         )
@@ -49,14 +49,6 @@ export default function HomePage(props) {
                                 })()
                             }
                         </div>
-                        {/* {
-                            props.menuData[3].map((cart, index) => {
-                                return (
-                                    <Cart key={index} data={cart} />                    
-                                )
-                            })
-                        } */}
-
                     </div>
                 </div>
             </div>
