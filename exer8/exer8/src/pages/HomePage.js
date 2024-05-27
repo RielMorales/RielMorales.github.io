@@ -13,7 +13,7 @@ export default function HomePage(props) {
                     products.map((product) => {
                         return (
                             <div className="all-products" key={product.id}>
-                                <Product>{ product }</Product>
+                                <Product data={product} />
                             </div>
                         )
                     })

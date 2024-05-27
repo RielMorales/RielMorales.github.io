@@ -1,8 +1,8 @@
 import React from "react";
 import { pushcart } from "../App";
 
-export default function Product({ children }) {
-    let product = children;
+export default function Product(props) {
+    let product = props.data;
     // console.log(product)
     return (
         <div className="product-container">
@@ -11,7 +11,7 @@ export default function Product({ children }) {
                 <li key={product.id}> {product.name} </li>
                 <button onClick={() => {
                     console.log("Added " + product.name + " to the cart!");
-                    pushcart.push(product);                
+                    pushcart.push(product);       
                 }}>
                     Add to Cart
                 </button>
