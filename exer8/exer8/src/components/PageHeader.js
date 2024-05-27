@@ -3,7 +3,6 @@ import LazLogo from "../images/lazada-logo.png"
 
 export default function PageHeader({children}){
     let navMenus = children;
-    // console.log(navMenus[0]);
     return (
         <div className="pageHead">
             <div className="logo-name">
