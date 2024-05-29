@@ -41,7 +41,7 @@ export default function HomePage(props) {
                                         return (
                                             props.menuData[3].map((cart, index) => {
                                                 return (
-                                                    <Cart key={index} data={[cart, props.menuData[2], props.menuData[3]]} />                
+                                                    <Cart key={index} data={[cart, props.menuData[2], props.menuData[3], props.menuData[4]]} />                
                                                 )
                                             })
                                         )

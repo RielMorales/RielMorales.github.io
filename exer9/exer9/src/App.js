@@ -39,7 +39,7 @@ function App() {
       console.log("No Match")
       tempCart = [...cart, newCart]
     } else if(tempCart.length == 0){
-
+      console.log("Empty Match")
     } else {
       console.log("Match")
       let index = cart.findIndex(obj => obj.id === newCart.id)
@@ -52,7 +52,7 @@ function App() {
     })
   }
   return (
-    <HomePage menuData={ [menus, products, updateCart, cart] }/>
+    <HomePage menuData={ [menus, products, updateCart, cart, setCart] }/>
   );
 }
 

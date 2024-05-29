@@ -8,17 +8,19 @@ export default function Cart(props){
         while (i < props.data[2].length){
             if (props.data[2][i] == props.data[0]){
                 console.log("Match Delete")
-                console.log(props.data[2][i])
-                delete props.data[2][i]
-                console.log(props.data[2])
+                console.log(tempCart[i])
+                console.log(tempCart)
+                // props.data[2][i] = undefined
+                tempCart.splice(i, 1)
+                console.log(tempCart)
                 break
             }
             i = i + 1;
         }
 
-        // props.data[1](() => {
-        //     return tempCart
-        // })
+        props.data[3](() => {
+            return tempCart
+        })
     }
     
 
