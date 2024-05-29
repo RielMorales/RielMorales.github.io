@@ -3,7 +3,6 @@ import Product from "../components/Product";
 import Cart from "../components/Cart";
 
 export default function HomePage(props) {
-    // console.log(props.menuData[2])
     let navMenus = props.menuData;
     let products = navMenus[1];
     let productTotal = 0;

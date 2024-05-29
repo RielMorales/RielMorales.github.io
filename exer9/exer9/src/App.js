@@ -20,8 +20,6 @@ const products = [
   { name: "Samsong Washing Machine", image: Image02, id: 2 },
   { name: "Hanabesh Electric Fan", image: Image03, id: 3 },
   { name: "ElGi Refrigerator", image: Image04, id: 4 },
-  // { name: "ElGi Refrigerator", image: Image04, id: 5 },
-  // { name: "ElGi Refrigerator", image: Image04, id: 6 },
 ];
 
 const pushcart = [];
@@ -34,7 +32,6 @@ function App() {
     let tempCart = [...cart]
     console.log(tempCart)
     let result = cart.filter(obj => obj.id === newCart.id)
-    // console.log(result)
     if (result.length === 0){
       console.log("No Match")
       tempCart = [...cart, newCart]
@@ -43,8 +40,6 @@ function App() {
     } else {
       console.log("Match")
       let index = cart.findIndex(obj => obj.id === newCart.id)
-      // console.log(cart[index])
-      // console.log(tempCart[index].qty)
       tempCart[index] = {...tempCart[index], qty: (tempCart[index].qty + 1) }
     }
     setCart((cart) => {
